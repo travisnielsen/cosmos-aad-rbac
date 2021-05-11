@@ -8,7 +8,9 @@ This is a sample application for testing Role Based Access Contro (RBAC) for dat
 
 ## Configure Application Settings
 
-Create a new file called `appsettings.json` and populate it with the following data:
+Download the [latest build of the sample application](https://github.com/travisnielsen/cosmos-aad-rbac/releases).
+
+In the same directory hosting `CosmosRbac.exe`, create a new file called `appsettings.json` and populate it with the following data:
 
 ```json
 {
@@ -21,9 +23,7 @@ Create a new file called `appsettings.json` and populate it with the following d
 }
 ```
 
-Update the values to match your environment. If you plan to use a Service Principal in your testing, update the values of `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, and `AZURE_CLIENT_SECRET`. Otherwise, the application will use your browser for interactive authentication.
-
-Make sure this file is in the same directory as `CosmosRbac.exe`.
+Update the values to match your environment. If you plan to use a Service Principal in your testing, update the values of `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, and `AZURE_CLIENT_SECRET`. Otherwise, leave these settings blank. The application will then use your browser for interactive authentication.
 
 ## Configure AAD RBAC
 
