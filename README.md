@@ -35,12 +35,13 @@ $accountName='<yourCosmosAccount>'
 
 az login
 
-az cosmosdb sql role definition create --account-name $accountName --resource-group $resourceGroupName --body @role-definition-ro.json
+# Make sure Azure CLI is pointing to the subscription you want to work in
+az account set --subscription "<your-subscription-name>"
 
+az cosmosdb sql role definition create --account-name $accountName --resource-group $resourceGroupName --body @role-definition-ro.json
 $roleDefIdReadOnly = az cosmosdb sql role definition list --account-name $accountName --resource-group $resourceGroupName --query "[?roleName=='MyReadOnlyRole'].name" --out tsv
 
 az cosmosdb sql role definition create --account-name $accountName --resource-group $resourceGroupName --body @role-definition-rw.json
-
 $roleDefIdReadWrite = az cosmosdb sql role definition list --account-name $accountName --resource-group $resourceGroupName --query "[?roleName=='MyReadWriteRole'].name" --out tsv
 ```
 
@@ -59,7 +60,6 @@ Finally, assign the `$principalId` to the `MyReadWriteRole` via the following co
 
 ```powershell
 az cosmosdb sql role assignment create --account-name $accountName --resource-group $resourceGroupName --scope "/" --principal-id $principalId --role-definition-id $roleDefIdReadWrite
-
 $assignmentRW = az cosmosdb sql role assignment list --account-name $accountName --resource-group $resourceGroupName --query "[?principalId=='$principalId'].name" --out tsv
 ```
 
