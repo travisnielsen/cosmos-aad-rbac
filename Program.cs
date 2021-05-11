@@ -4,9 +4,6 @@ using Azure.Core;
 using Azure.Identity;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
-// using McMaster.Extensions.CommandLineUtils;
-// using System.ComponentModel.DataAnnotations;
-using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -17,12 +14,7 @@ namespace CosmosRbac
         private static TokenCredential credential;
         private static string databaseId;
         private static string containerId;
-
-        // [Argument(0, Description = "The command to execute: 'create' or 'read'")]
-        // [Required]
         private static string command;
-
-        // [Option(Description = "The JSON data to insert into the database", LongName = "data", ShortName = "d")]
         private static string itemData; 
 
         static async Task Main(string[] args)
@@ -43,7 +35,8 @@ namespace CosmosRbac
                     }
 
                 }
-                IConfigurationRoot configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+
+                IConfigurationRoot configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true).Build();
 
                 string endpoint = configuration["endPointUrl"];
                 databaseId = configuration["database"];
