@@ -36,7 +36,7 @@ Function Get-PrincipalName {
     }
     else {
         # try with group
-        $name = (Get-AzADApplication -ObjectId $objectId).DisplayName
+        $name = (Get-AzADGroup -ObjectId $objectId).DisplayName
     }
 
     return $name
