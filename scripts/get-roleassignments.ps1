@@ -1,6 +1,6 @@
-$accountName="trniel"
-$resourceGroupName="cosmos-demo"
-$subscrptionId = "cecea5c9-0754-4a7f-b5a9-46ae68dcafd3"
+$accountName=""
+$resourceGroupName=""
+$subscrptionId = ""
 
 Connect-AzAccount
 # Get-AzContext -ListAvailable
